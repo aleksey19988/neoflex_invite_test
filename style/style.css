@@ -6,6 +6,10 @@ body {
     max-width: 1110px;
 }
 
+.container-fluid {
+    padding: 0;
+}
+
 .bg-nav {
     background-color: #EAEAEA !important; /* Испольщовал !important для того, чтобы перебить цвет, встроенный в bootstrap*/
 }
