@@ -1,0 +1,104 @@
+body {
+    background-color: #EAEAEA;
+}
+
+.bg-nav {
+    background-color: #EAEAEA !important; /* Испольщовал !important для того, чтобы перебить цвет, встроенный в bootstrap*/
+}
+
+.logo-name {
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.navbar-collapse {
+    flex-grow: 0; /*Поставил 0 для того, чтобы выровнять элементы в шапке по краям*/
+}
+.header-icons {
+    width: 120px;
+    display: flex;
+}
+
+.header-icon {
+    width: min-content;
+}
+
+/* Стили для контейнера "наушники" */
+.headphones-header {
+    color: #838383;
+}
+
+.items-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 350px;
+    /* height: 407px; */
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    margin: 30px;
+    border-radius: 30px;
+    display: flex;
+    padding: 20px;
+    font-weight: 600;
+    transition: all .5s;
+}
+
+.card:hover {
+    box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.item-img {
+    width: 220px;
+    margin: 0 auto;
+}
+
+.card-body {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 55px;
+}
+
+.item-title {
+    margin-bottom: 25px;
+}
+
+.item-rating {
+    display: flex;
+}
+
+.item-rating-text {
+    margin-left: 10px;
+    color: #838383;
+}
+
+.item-price {
+    color: #FFA542;
+}
+
+.item-current-price {
+    font-size: 17px;
+}
+
+.item-old-price {
+    font-size: 13px;
+    text-decoration: line-through;
+}
+
+.item-buy {
+    margin-top: 16px;
+    font-weight: 600;
+    text-align: right;
+}
+
+.price-with-discount {
+    display: flex;
+    width: 110px;
+    justify-content: space-between;
+    color: #DF6464;
+}
+
+.headphones-in-case { /* Создал отдельный класс для того, чтобы выровнять элементы в карточках с насушниками в кейсе (изображение намного меньше, чем в других */
+    margin-top: 56px;
+}
