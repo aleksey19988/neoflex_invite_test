@@ -2,6 +2,10 @@ body {
     background-color: #EAEAEA;
 }
 
+.container {
+    max-width: 1110px;
+}
+
 .bg-nav {
     background-color: #EAEAEA !important; /* Испольщовал !important для того, чтобы перебить цвет, встроенный в bootstrap*/
 }
@@ -27,12 +31,12 @@ body {
     color: #838383;
     font-weight: 600;
     font-size: 20px;
-    margin: 0 30px;
 }
 
 .items-list {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .card {
@@ -40,7 +44,7 @@ body {
     /* height: 407px; */
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
     background-color: #fff;
-    margin: 30px;
+    margin: 15px 0;
     border-radius: 30px;
     display: flex;
     padding: 20px;
@@ -113,4 +117,70 @@ body {
 
 .headphones-in-case { /* Создал отдельный класс для того, чтобы выровнять элементы в карточках с насушниками в кейсе (изображение намного меньше, чем в других */
     margin-top: 56px;
+}
+
+/*Стили для подвала и его элементов*/
+.footer-elems {
+    background-color: #fff;
+    height: 149px;
+    border-radius: 30px 30px 0 0;
+    padding: 30px 27px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.sections-and-language {
+    display: flex;
+    width: 427px;
+    justify-content: space-between;
+}
+
+.sections-and-language a {
+    text-decoration: none;
+    color: #000;
+}
+
+.left-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.left-column a {
+    transition: color .3s;
+}
+
+.left-column a:hover {
+    color: #FFA542;
+}
+
+.change-language {
+    display: flex;
+    margin-top: 34px;
+    width: 111px;
+    justify-content: space-between;
+}
+
+.change-lang .russian { /* Такая конструкция для большей спецефичности, а то 138 строка перекрывает и делает текст чёрным */
+    color: #FFA542;
+}
+
+.change-lang .russian,
+.change-lang .english {
+    transition: color .3s;
+}
+
+.change-lang .russian:hover,
+.change-lang .english:hover {
+    color: #FFA542;
+}
+
+.social {
+    width: 126px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.social a {
+    height: min-content;
 }
