@@ -69,7 +69,7 @@ function getPropertyValue(item, property) {
 
 function renderTotalPrice(totalPrice) {
     let totalValue = document.getElementById('total-data-number');
-    totalValue.innerHTML = `${totalPrice} &#8381`;
+    totalValue.innerHTML = `&#8381 ${totalPrice}`;
 }
 
 /* Перебираем корзину и отрисовываем каждый товар */
@@ -155,7 +155,5 @@ document.onclick = event => {
         deleteItem(cart, item[0]);
     }
 }
-
-/* Удаление товара из корзины */
 
 renderCart();
