@@ -32,11 +32,13 @@ body {
     width: min-content;
 }
 
-.cart {
+.cart,
+.favorites {
     position: relative;
 }
 
-.cart-circle {
+.cart-circle,
+.favorites-circle {
     position: absolute;
     width: 18px;
     height: 18px;
@@ -44,7 +46,7 @@ body {
     color: #fff;
     border-radius: 50%;
     top: 3px;
-    right: 7px;
+    right: 5px;
     display: flex;
     justify-content: center;
     align-items: center;

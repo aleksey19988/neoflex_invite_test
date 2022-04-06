@@ -215,10 +215,9 @@ function getItemCount() {
 document.onclick = event => {
     if (event.target.classList.contains('item-buy')) {
         let itemArticle = event.target.dataset.article;// Получаем артикул товара, на котором нажали "купить"
-        if (!getItemByArticle(headphones, itemArticle)) {// Если в списке с обычными наушниками ничего не нашёл
+        item = getItemByArticle(headphones, itemArticle);
+        if (item.length < 1) {// Если в списке с обычными наушниками ничего не нашёл
             item = getItemByArticle(wirelessHeadphones, itemArticle);// То ищем в списке с беспроводными
-        } else {
-            item = getItemByArticle(headphones, itemArticle);
         }
         addItemToTheCart(cart, item);//Добавляем товар в корзину
 
