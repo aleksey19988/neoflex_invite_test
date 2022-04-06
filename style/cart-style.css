@@ -38,6 +38,11 @@ body {
     font-size: 20px;
 }
 
+.content {
+    display: flex;
+    justify-content: space-between;
+}
+
 /* Стили для карточек товара*/
 .items-list {
     margin-top: 13px;
@@ -45,7 +50,7 @@ body {
 
 .item-card {
     padding: 18px;
-    max-width: 630px;
+    width: 630px;
     height: 220px;
     background-color: #fff;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
@@ -133,6 +138,46 @@ body {
 .plus-btn,
 .trash-icon:hover {
     cursor: pointer;
+}
+
+.total {
+    width: 350px;
+    min-height: 120px;
+    height: min-content;
+    background-color: #fff;
+    margin-top: 35px;
+    border-radius: 30px;
+    padding: 20px;
+    position: relative;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+
+.total-data {
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+}
+
+.go-to-purchase {
+    width: 350px;
+    height: 65px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background-color: #101010;
+    color: #fff;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
+    transition: transform .3s;
+    font-size: 17px;
+    border-style: none;
+}
+
+.go-to-purchase:hover {
+    transform: scale(1.05);
 }
 
 /*Стили для подвала и его элементов*/

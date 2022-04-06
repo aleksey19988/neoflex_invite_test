@@ -10,6 +10,9 @@
 
     <!--My CSS -->
     <link rel="stylesheet" href="style/cart-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
 
     <title>Cart</title>
 </head>
@@ -50,13 +53,16 @@
                     <div class="item-section-header cart-header">
                         Корзина
                     </div>
-                    <div class="items-list" id="items-list">
-                        <!--Отрисовка карточек с товарами реализуется с помощью JS в cart-data.js-->
-                    </div>
-                    <div class="total">
-                        <div class="total-data"></div>
-                        <div class="go-to-purchase">
-                            <a href="" class="go-to-purchase-btn"></a>
+                    <div class="content">
+                        <div class="items-list" id="items-list">
+                            <!--Отрисовка карточек с товарами реализуется с помощью JS в cart-data.js-->
+                        </div>
+                        <div class="total">
+                            <div class="total-data">
+                                <div class="total-data-text">Итого</div>
+                                <div class="total-data-number" id="total-data-number">0</div>
+                            </div>
+                            <button class="go-to-purchase">Перейти к оформлению</button>
                         </div>
                     </div>
                 </div>

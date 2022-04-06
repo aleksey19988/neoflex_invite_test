@@ -168,6 +168,7 @@ wirelessHeadphones.forEach(element => {// Перебираем массив с �
 
     /*На каждой итерации вызываем функцию ниже и отрисовываем карточку с товаром */
     renderHeadphoneCard(wirelessHeadphonesListContainer, img, title, oldPrice, currentPrice, discount, rate, itemNum);
+
 });
 
 /* Раздел, отвечающий за обработку добавления товара в корзину */
@@ -230,3 +231,4 @@ document.onclick = event => {
         cartCircle.innerHTML = getItemCount();
     }
 }
+

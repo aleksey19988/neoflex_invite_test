@@ -67,8 +67,15 @@ function getPropertyValue(item, property) {
     return null;
 }
 
+function renderTotalPrice(totalPrice) {
+    let totalValue = document.getElementById('total-data-number');
+    totalValue.innerHTML = `${totalPrice} &#8381`;
+}
+
 /* Перебираем корзину и отрисовываем каждый товар */
 function renderCart() {
+    let totalPrice = 0;//Переменная для подсчёта общей суммы заказа
+
     cart.forEach(element => {// Перебираем массив с товарами
         let img = getPropertyValue(element, 'img');
         let title = getPropertyValue(element, 'title');
@@ -78,10 +85,12 @@ function renderCart() {
         let article = getPropertyValue(element, 'article');
         let count = getPropertyValue(element, 'count');
         let totalItemPrice = currentPrice * count;
-    
+        totalPrice += totalItemPrice;
         /*На каждой итерации вызываем функцию ниже и отрисовываем карточку с товаром */
         renderItemCard(itemsListContainer, img, title, oldPrice, currentPrice, discount, count, article, totalItemPrice);
     });
+    
+    renderTotalPrice(totalPrice);
 }
 
 /* Обрабатываем нажатия на плюс и минус */
