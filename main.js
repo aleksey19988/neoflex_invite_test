@@ -192,7 +192,7 @@ function addItemToTheCart(cart, item) {
     cart.forEach(element => {
         if (element.article === item[0].article) {// Если в корзине уже лежит такой товар, то просто увеличиваем его кол-во на 1
             element.count += 1;
-            isAdded = true;
+            isAlreadyAdded = true;
         }
     });
 
@@ -200,6 +200,16 @@ function addItemToTheCart(cart, item) {
         item[0].count = 1;
         cart.push(item[0]);
     }
+}
+
+function getItemCount() {
+    result = 0;
+
+    cart.forEach(element => {
+        result += element.count;
+    });
+
+    return result;
 }
 
 document.onclick = event => {
@@ -211,5 +221,9 @@ document.onclick = event => {
             item = getItemByArticle(headphones, itemArticle);
         }
         addItemToTheCart(cart, item);//Добавляем товар в корзину
+
+        /*Увеличиваем число на иконке корзины в соответствии с количеством товара в корзине */
+        let cartCircle = document.getElementById('cart-circle');
+        cartCircle.innerHTML = getItemCount();
     }
 }
