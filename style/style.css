@@ -47,7 +47,7 @@ body {
 
 .card {
     width: 350px;
-    /* height: 407px; */
+    height: 407px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
     background-color: #fff;
     margin: 15px 0;
@@ -70,7 +70,7 @@ body {
 .card-body {
     display: flex;
     justify-content: space-between;
-    margin-top: 55px;
+    margin-top: 30px;
 }
 
 .item-title {
@@ -97,6 +97,10 @@ body {
 .item-old-price {
     font-size: 13px;
     text-decoration: line-through;
+}
+
+.item-img {
+    height: 237px;
 }
 
 .item-buy {
