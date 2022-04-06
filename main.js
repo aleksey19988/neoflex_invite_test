@@ -221,6 +221,9 @@ document.onclick = event => {
         }
         addItemToTheCart(cart, item);//Добавляем товар в корзину
 
+        /*Добавляем данные в SessionStorage */
+        sessionStorage.setItem('cart', JSON.stringify(cart));//Записываем данные в строку JSON, т. к. sessionStorage принимает только строку
+
         /*Увеличиваем число на иконке корзины в соответствии с количеством товара в корзине */
         let cartCircle = document.getElementById('cart-circle');
         cartCircle.innerHTML = getItemCount();

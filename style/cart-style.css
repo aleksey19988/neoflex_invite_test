@@ -38,6 +38,103 @@ body {
     font-size: 20px;
 }
 
+/* Стили для карточек товара*/
+.items-list {
+    margin-top: 13px;
+}
+
+.item-card {
+    padding: 18px;
+    max-width: 630px;
+    height: 220px;
+    background-color: #fff;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    display: flex;
+    justify-content: space-between;
+    transition: all .5s;
+    margin: 20px 0;
+}
+
+.item-card:hover {
+    box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.5);
+}
+.item-data {
+    display: flex;
+}
+
+.item-img {
+    width: 145px;
+    height: 135px;
+}
+
+.img-and-count {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: 23px;
+}
+
+.minus-btn,
+.plus-btn {
+    width: 30px;
+    height: 30px;
+}
+
+.counter-tools {
+    display: flex;
+    justify-content: space-around;
+}
+
+.item-count {
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.item-title-and-price {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.item-price {
+    margin-top: 12px;
+    color: #AAAAAA;
+}
+
+.current-price-and-discount {
+    display: flex;
+    justify-content: space-between;
+}
+
+.discount {
+    color: red;
+}
+
+.old-price {
+    margin: 0;
+    font-size: 13px;
+    text-decoration: line-through;
+}
+
+.trash-and-total {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.trash-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.minus-btn,
+.plus-btn,
+.trash-icon:hover {
+    cursor: pointer;
+}
+
 /*Стили для подвала и его элементов*/
 .footer {
     background-color: #fff;
