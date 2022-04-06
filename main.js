@@ -5,21 +5,21 @@ const headphones = [
         old_price: 3527,
         current_price: 2927,
         rate: 4.7,
-        item_num: 1,
+        article: 'item-1',
     },
     {
         img: 'item-images/headphones-item-2.png',
         title: 'Apple EarPods',
         current_price: 2327,
         rate: 4.5,
-        item_num: 2,
+        article: 'item-2',
     },
     {
         img: 'item-images/headphones-item-3.png',
         title: 'Apple EarPods',
         current_price: 2327,
         rate: 4.5,
-        item_num: 3,
+        article: 'item-3',
     },
     {
         img: 'item-images/headphones-item-4.png',
@@ -27,21 +27,21 @@ const headphones = [
         current_price: 2927,
         discount: 20,
         rate: 4.7,
-        item_num: 4,
+        article: 'item-4',
     },
     {
         img: 'item-images/headphones-item-5.png',
         title: 'Apple EarPods',
         current_price: 2327,
         rate: 4.5,
-        item_num: 5,
+        article: 'item-5',
     },
     {
         img: 'item-images/headphones-item-6.png',
         title: 'Apple EarPods',
         current_price: 2327,
         rate: 4.5,
-        item_num: 6,
+        article: 'item-6',
     },
 ];
 
@@ -51,21 +51,21 @@ const wirelessHeadphones = [
         title: 'Apple AirPods',
         current_price: 9527,
         rate: 4.7,
-        item_num: 1,
+        article: 'wireless-item-1',
     },
     {
         img: 'item-images/wireless-headphones-item-2.png',
         title: 'GERLAX GH-04',
         current_price: 6527,
         rate: 4.7,
-        item_num: 2,
+        article: 'wireless-item-2',
     },
     {
         img: 'item-images/wireless-headphones-item-3.png',
         title: 'BOROFONE BO4',
         current_price: 9527,
         rate: 4.7,
-        item_num: 3,
+        article: 'wireless-item-3',
     }
 ];
 
@@ -75,23 +75,17 @@ const wirelessHeadphonesListContainer = document.getElementById('wireless-headph
 function getPropertyValue(item, property) {
     
     if (Object.hasOwnProperty.call(item, property)) {
-        // for (const property in item) {
-        //     let img = getPropertyValue()
-        //     const result = element[property];
-        //     console.log(result);
-        // }
         return item[property];
     }
 
     return null;
 }
 
-function renderHeadphoneCard(parentElem, img, title, old_price = null, current_price, discount_item = null, rate, item_num) {
+function renderHeadphoneCard(parentElem, img, title, old_price = null, current_price, discount_item = null, rate, article) {
     
     let oldPrice = old_price ?? '';//Если в old_price передали значение - оно запишется, иначе - запишется пустая строка
-    // let discount = discount_item ?? null;//Если скидки нет - будет пустая строка, иначе - значение
 
-    let htmlText = `<div class="card item-${item_num}">
+    let htmlText = `<div class="card ${article}">
                         <img src="${img}" alt="Headphones" class="card-img-top item-img">
                         <div class="card-body">
                             <div class="left-content">
@@ -108,13 +102,12 @@ function renderHeadphoneCard(parentElem, img, title, old_price = null, current_p
                                     <div class="card-text item-current-price">${current_price} &#8381</div>
                                     <div class="card-text item-old-price">${oldPrice}</div>
                                 </div>
-                                <div class="button item-buy">
-                                    <a href="" class="buy-link" data-article="item-${item_num}">Купить</a>
+                                <div class="button item-buy" data-article="${article}">Купить</button>
                                 </div>
                             </div>
                         </div>
                     </div>`;
-    let htmlTextWithDiscount = `<div class="card item-${item_num}">
+    let htmlTextWithDiscount = `<div class="card ${article}">
                                     <img src="${img}" alt="" class="card-img-top item-img">
                                     <div class="card-body">
                                         <div class="left-content">
@@ -134,8 +127,7 @@ function renderHeadphoneCard(parentElem, img, title, old_price = null, current_p
                                                 </div>
                                                 <div class="card-text item-old-price"></div>
                                             </div>
-                                            <div class="button item-buy">
-                                                <a href="" class="buy-link" data-article="item-${item_num}">Купить</a>
+                                            <div class="button item-buy" data-article="${article}">Купить</button>
                                             </div>
                                         </div>
                                     </div>
@@ -156,7 +148,7 @@ headphones.forEach(element => {// Перебираем массив с това�
     let currentPrice = getPropertyValue(element, 'current_price');
     let discount = getPropertyValue(element, 'discount');
     let rate = getPropertyValue(element, 'rate');
-    let itemNum = getPropertyValue(element, 'item_num');
+    let itemNum = getPropertyValue(element, 'article');
 
     /*На каждой итерации вызываем функцию ниже и отрисовываем карточку с товаром */
     renderHeadphoneCard(headphonesListContainer, img, title, oldPrice, currentPrice, discount, rate, itemNum);
@@ -172,8 +164,52 @@ wirelessHeadphones.forEach(element => {// Перебираем массив с �
     let currentPrice = getPropertyValue(element, 'current_price');
     let discount = getPropertyValue(element, 'discount');
     let rate = getPropertyValue(element, 'rate');
-    let itemNum = getPropertyValue(element, 'item_num');
+    let itemNum = getPropertyValue(element, 'article');
 
     /*На каждой итерации вызываем функцию ниже и отрисовываем карточку с товаром */
     renderHeadphoneCard(wirelessHeadphonesListContainer, img, title, oldPrice, currentPrice, discount, rate, itemNum);
 });
+
+/* Раздел, отвечающий за обработку добавления товара в корзину */
+
+let cart = [];
+
+function getItemByArticle(itemsList, article) {
+    return itemsList.filter((element) => {
+        return element.article === article;
+    });
+}
+
+function addItemToTheCart(cart, item) {
+    let isAlreadyAdded = false;// Переменная для проверки на наличие товара в корзине
+
+    if (cart.length === 0) {//Если корзина пустая, то сразу добавляем товар в корзину
+        item[0].count = 1;
+        cart.push(item[0]);
+        return true;
+    }
+
+    cart.forEach(element => {
+        if (element.article === item[0].article) {// Если в корзине уже лежит такой товар, то просто увеличиваем его кол-во на 1
+            element.count += 1;
+            isAdded = true;
+        }
+    });
+
+    if (!isAlreadyAdded) {
+        item[0].count = 1;
+        cart.push(item[0]);
+    }
+}
+
+document.onclick = event => {
+    if (event.target.classList.contains('item-buy')) {
+        let itemArticle = event.target.dataset.article;// Получаем артикул товара, на котором нажали "купить"
+        if (!getItemByArticle(headphones, itemArticle)) {// Если в списке с обычными наушниками ничего не нашёл
+            item = getItemByArticle(wirelessHeadphones, itemArticle);// То ищем в списке с беспроводными
+        } else {
+            item = getItemByArticle(headphones, itemArticle);
+        }
+        addItemToTheCart(cart, item);//Добавляем товар в корзину
+    }
+}

@@ -90,6 +90,10 @@ body {
     color: #FFA542;
 }
 
+.item-buy:hover {
+    cursor: pointer;
+}
+
 .item-current-price {
     font-size: 17px;
 }
