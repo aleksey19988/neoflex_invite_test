@@ -22,8 +22,8 @@ function renderItemCard(parentElem, img, title, oldPrice = null, currentPrice, d
                                 <div class="item-price old-price">${oldPrice}</div>
                             </div>
                         </div>
-                            <div class="trash-and-total">
-                                <img src="icons/trash.svg" alt="Удалить" class="trash-icon">
+                            <div class="trash-and-total" data-article="${article}">
+                                <img src="icons/trash.svg" alt="Удалить" class="trash-icon" id="trash-icon">
                                 <div class="total-price">${totalItemPrice} &#8381</div>
                             </div>
                     </div>`;
@@ -45,8 +45,8 @@ function renderItemCard(parentElem, img, title, oldPrice = null, currentPrice, d
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="trash-and-total">
-                                        <img src="icons/trash.svg" alt="Удалить" class="trash-icon">
+                                    <div class="trash-and-total" data-article="${article}">
+                                        <img src="icons/trash.svg" alt="Удалить" class="trash-icon" id="trash-icon">
                                         <div class="total-price">${totalItemPrice} &#8381</div>
                                     </div>
                                 </div>`
@@ -84,11 +84,6 @@ function renderCart() {
     });
 }
 
-/* кнопки увеличения/уменьшения кол-ва товаров в корзине*/
-
-const plusBtn = document.getElementById("plus-btn");
-const minusBtn = document.getElementById("minus-btn");
-
 /* Обрабатываем нажатия на плюс и минус */
 
 function changeNumbersOfItems(cart, item, operation) {
@@ -115,7 +110,7 @@ function deleteItem(cart, item) {
     });
     console.log(updatedData);
     updateContent(updatedData);
-    location.reload();
+    location.reload();// Пока обновление работает только через автоматическое обновление страницы при достижении кол-ва товара - 0 (ноль)
 }
 
 function updateContent(updatedData) {
@@ -138,13 +133,20 @@ document.onclick = event => {
         item = cart.filter(elem => {
             return elem.article === itemArticle;
         });
-        // console.log(item);
         if (item[0].count <= 1) {//Если у нас и так единица товара в корзине, то при уменьшении он просто должен удаляться из корзины
             deleteItem(cart, item[0]);
         } else {
             changeNumbersOfItems(cart, item[0], '-');
         }
+    } else if (event.target.classList.contains('trash-icon')) {
+        let itemArticle = event.target.parentElement.dataset.article;//Получаем артикул товара, на котором нажали
+        item = cart.filter(elem => {
+            return elem.article === itemArticle;
+        });
+        deleteItem(cart, item[0]);
     }
 }
+
+/* Удаление товара из корзины */
 
 renderCart();
