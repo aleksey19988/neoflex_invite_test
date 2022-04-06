@@ -43,7 +43,7 @@ const headphones = [
         rate: 4.5,
         item_num: 6,
     },
-]
+];
 
 const wirelessHeadphones = [
     {
@@ -67,13 +67,10 @@ const wirelessHeadphones = [
         rate: 4.7,
         item_num: 3,
     }
-]
+];
 
-document.onclick = (event) => {
-    
-}
-
-
+const headphonesListContainer = document.getElementById('headphones-list');
+const wirelessHeadphonesListContainer = document.getElementById('wireless-headphones-list');
 
 function getPropertyValue(item, property) {
     
@@ -89,8 +86,8 @@ function getPropertyValue(item, property) {
     return null;
 }
 
-function renderHeadphoneCard(img, title, old_price = null, current_price, discount_item = null, rate, item_num) {
-    let headphonesListContainer = document.getElementById('headphones-list');
+function renderHeadphoneCard(parentElem, img, title, old_price = null, current_price, discount_item = null, rate, item_num) {
+    
     let oldPrice = old_price ?? '';//Если в old_price передали значение - оно запишется, иначе - запишется пустая строка
     // let discount = discount_item ?? null;//Если скидки нет - будет пустая строка, иначе - значение
 
@@ -145,13 +142,11 @@ function renderHeadphoneCard(img, title, old_price = null, current_price, discou
                                 </div>  `
 
     if (discount_item !== null) {
-        headphonesListContainer.insertAdjacentHTML('beforeend', htmlTextWithDiscount);
+        parentElem.insertAdjacentHTML('beforeend', htmlTextWithDiscount);
     } else {
-        headphonesListContainer.insertAdjacentHTML('beforeend', htmlText);
+        parentElem.insertAdjacentHTML('beforeend', htmlText);
     }
 }
-
-// renderHeadphoneCard();
 
 /* Перебираем список товаров "наушники" и отрисовываем их */
 headphones.forEach(element => {// Перебираем массив с товарами
@@ -162,6 +157,23 @@ headphones.forEach(element => {// Перебираем массив с това�
     let discount = getPropertyValue(element, 'discount');
     let rate = getPropertyValue(element, 'rate');
     let itemNum = getPropertyValue(element, 'item_num');
-    console.log(`Дальше новый объект!\n`);
-    renderHeadphoneCard(img, title, oldPrice, currentPrice, discount, rate, itemNum);
+
+    /*На каждой итерации вызываем функцию ниже и отрисовываем карточку с товаром */
+    renderHeadphoneCard(headphonesListContainer, img, title, oldPrice, currentPrice, discount, rate, itemNum);
+});
+
+/* Перебираем список товаров "беспроводные наушники" и отрисовываем их */
+wirelessHeadphones.forEach(element => {// Перебираем массив с товарами
+
+    /* Записываем каждое свойство в отдельную переменную для дальнейшего использования и подстановки значений в функции */
+    let img = getPropertyValue(element, 'img');
+    let title = getPropertyValue(element, 'title');
+    let oldPrice = getPropertyValue(element, 'old_price');
+    let currentPrice = getPropertyValue(element, 'current_price');
+    let discount = getPropertyValue(element, 'discount');
+    let rate = getPropertyValue(element, 'rate');
+    let itemNum = getPropertyValue(element, 'item_num');
+
+    /*На каждой итерации вызываем функцию ниже и отрисовываем карточку с товаром */
+    renderHeadphoneCard(wirelessHeadphonesListContainer, img, title, oldPrice, currentPrice, discount, rate, itemNum);
 });
