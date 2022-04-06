@@ -1,7 +1,7 @@
 # Neoflex invite test
 
 ## Главная страница
-![Главная страница](/screenshotes/main-page.png "Главная страница")
+![Главная страница](/screenshots/main-page.png "Главная страница")
 
 ## Страница корзины
-![Страница корзины](/screenshotes/cart-page.png "Страница корзиныё")
+![Страница корзины](/screenshots/cart-page.png "Страница корзиныё")
