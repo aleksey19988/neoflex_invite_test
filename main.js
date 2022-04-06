@@ -205,7 +205,8 @@ function addItemToTheCart(cart, item) {
 function getItemCount() {
     result = 0;
 
-    cart.forEach(element => {
+    lastUpdatedData = JSON.parse(sessionStorage.getItem('cart'));
+    lastUpdatedData.forEach(element => {
         result += element.count;
     });
 
