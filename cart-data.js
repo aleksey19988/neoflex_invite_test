@@ -1,6 +1,6 @@
 let cart = JSON.parse(sessionStorage.getItem('cart'));
-
 const itemsListContainer = document.getElementById('items-list');
+let cartCircle = document.getElementById('cart-circle');
 
 function renderItemCard(parentElem, img, title, oldPrice = null, currentPrice, discount = null, count, article, totalItemPrice) {
 
@@ -109,7 +109,7 @@ function changeNumbersOfItems(cart, item, operation) {
             }
         });
     }
-    updateContent();
+    updateContent(cart);
 }
 
 function deleteItem(cart, item) {
@@ -130,6 +130,17 @@ function updateContent(updatedData) {
     renderCart();// Рендерим карточки товара с актуальными данными
 }
 
+function getItemCount() {
+    result = 0;
+
+    lastUpdatedData = JSON.parse(sessionStorage.getItem('cart'));
+    lastUpdatedData.forEach(element => {
+        result += element.count;
+    });
+
+    return result;
+}
+
 document.onclick = event => {
     if (event.target.classList.contains('plus-btn')) {
         let itemArticle = event.target.parentElement.dataset.article;//Получаем артикул товара, на котором нажали
@@ -137,6 +148,7 @@ document.onclick = event => {
             return elem.article === itemArticle;
         });
         changeNumbersOfItems(cart, item[0], '+');
+        cartCircle.innerHTML = getItemCount();
     } else if (event.target.classList.contains('minus-btn')) {
         let itemArticle = event.target.parentElement.dataset.article;//Получаем артикул товара, на котором нажали
         item = cart.filter(elem => {
@@ -147,13 +159,17 @@ document.onclick = event => {
         } else {
             changeNumbersOfItems(cart, item[0], '-');
         }
+        cartCircle.innerHTML = getItemCount();
     } else if (event.target.classList.contains('trash-icon')) {
         let itemArticle = event.target.parentElement.dataset.article;//Получаем артикул товара, на котором нажали
         item = cart.filter(elem => {
             return elem.article === itemArticle;
         });
         deleteItem(cart, item[0]);
+        cartCircle.innerHTML = getItemCount();
     }
-}
 
+    
+}
+cartCircle.innerHTML = getItemCount();
 renderCart();

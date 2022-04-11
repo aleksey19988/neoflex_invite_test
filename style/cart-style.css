@@ -47,6 +47,26 @@ body {
     justify-content: space-between;
 }
 
+.cart,
+.favorites {
+    position: relative;
+}
+
+.cart-circle,
+.favorites-circle {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background-color: #FFA542;
+    color: #fff;
+    border-radius: 50%;
+    top: 3px;
+    right: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* Стили для карточек товара*/
 .items-list {
     margin-top: 13px;
